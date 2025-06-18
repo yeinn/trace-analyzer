@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "source": "DevTools",
+    "startTime": "2025-06-16T04:41:57.978Z"
+  },
+  "traceEvents": [
+    {
+      "name": "ResourceSendRequest",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 10,
+      "ts": 1000,
+      "args": {
+        "data": {
+          "requestId": "1",
+          "url": "https://example.com/script.js"
+        }
+      }
+    },
+    {
+      "name": "ResourceReceiveResponse",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 10,
+      "ts": 1500,
+      "args": {
+        "data": {
+          "requestId": "1"
+        }
+      }
+    },
+    {
+      "name": "ResourceFinish",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 10,
+      "ts": 3000,
+      "args": {
+        "data": {
+          "requestId": "1"
+        }
+      }
+    },
+    {
+      "name": "ResourceSendRequest",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 11,
+      "ts": 2000,
+      "args": {
+        "data": {
+          "requestId": "2",
+          "url": "https://example.com/styles.css"
+        }
+      }
+    },
+    {
+      "name": "ResourceReceiveResponse",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 11,
+      "ts": 2500,
+      "args": {
+        "data": {
+          "requestId": "2"
+        }
+      }
+    },
+    {
+      "name": "ResourceFinish",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 11,
+      "ts": 22000,
+      "args": {
+        "data": {
+          "requestId": "2"
+        }
+      }
+    },
+    {
+      "name": "ResourceSendRequest",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 12,
+      "ts": 3000,
+      "args": {
+        "data": {
+          "requestId": "3",
+          "url": "https://api.example.com/data"
+        }
+      }
+    },
+    {
+      "name": "ResourceReceiveResponse",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 12,
+      "ts": 3200,
+      "args": {
+        "data": {
+          "requestId": "3"
+        }
+      }
+    },
+    {
+      "name": "ResourceReceiveResponse",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 13,
+      "ts": 3500,
+      "args": {
+        "data": {
+          "requestId": "4"
+        }
+      }
+    },
+    {
+      "name": "ResourceFinish",
+      "cat": "devtools.timeline",
+      "ph": "I",
+      "pid": 1,
+      "tid": 13,
+      "ts": 4000,
+      "args": {
+        "data": {
+          "requestId": "4"
+        }
+      }
+    }
+  ]
+}
