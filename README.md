@@ -1,92 +1,102 @@
-# 📦 trace-analyzer
+# 📊 trace-analyzer
 
 > 🇰🇷 This document is also available in [Korean (한국어)](./docs/README.ko.md).
 
-Lightweight CLI + library tool to analyze Chrome `.trace.json` files
-and detect **web performance bottlenecks**.
+CLI tool for **bottleneck analysis** using Chrome `.trace.json` files.
+Extracts performance insights such as slow API calls, render-blocking resources, and long tasks on the main thread.
 
-Supports:
 
-* 🐒 Slow API request detection
-* 🧱 Blocking JS/CSS resources (planned)
-* 🧠 Long tasks in main thread (planned)
+## ✨ Features
+
+| Feature                       | Description                                                                 |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| 🐢 Slow API Analysis          | Calculates duration from `ResourceSendRequest` to `ResourceReceiveResponse` |
+| 🚧 Blocking Resource Analysis | Detects long-loading JS/CSS files that may delay rendering                  |
+| 🧠 Long Task Detection        | Extracts main-thread tasks over a threshold (default: 50ms)                 |
 
 ---
 
-## 🚀 Install
-
-### CLI (no install):
+## 🔧 Installation
 
 ```bash
-npx trace-analyzer ./your-trace.json
+npm install -g trace-analyzer
 ```
 
-### Library:
+Or link locally for development:
 
 ```bash
-pnpm add trace-analyzer
+npm link
 ```
 
 ---
 
-## 📜 Usage
-
-### CLI
+## 🚀 Usage
 
 ```bash
-npx trace-analyzer ./trace.json --top 5
+trace-analyzer <trace.json> [options]
 ```
 
-**Options**
+### Options
 
-* `--top <n>`: Show top N slowest API calls
-* `--filter <url>`: Filter by URL substring
+| Option           | Description                                       | Default  |
+| ---------------- | ------------------------------------------------- | -------- |
+| `--top <N>`      | Show only the top N results                       | 10       |
+| `--slowapi`      | Analyze slow API requests only                    | included |
+| `--blocking`     | Analyze render-blocking JS/CSS resources only     | included |
+| `--longtask`     | Analyze long tasks on main thread                 | included |
+| `--longtask <N>` | Set threshold for long tasks in milliseconds (ms) | 50       |
 
----
+### Examples
 
-### Programmatic API
-
-```ts
-import { analyzeTraceFile } from 'trace-analyzer'
-
-const result = await analyzeTraceFile('./trace.json')
-
-console.log(result.slowAPIs)
-/*
-[
-  { url: '/api/products', duration: 1345 },
-  { url: '/api/user', duration: 1182 },
-]
-*/
+```bash
+trace-analyzer ./sample.trace.json --top 5
+trace-analyzer ./sample.trace.json --longtask 80
+trace-analyzer ./sample.trace.json --blocking
 ```
 
 ---
 
-## 🧹 Features
+## 🧪 Testing
 
-| Feature                       | Status      |
-| ----------------------------- | ----------- |
-| Parse traceEvents             | ✅ Done      |
-| Detect slow API requests      | ✅ Done      |
-| Detect blocking JS/CSS        | 🛠 Planned  |
-| Detect long main-thread tasks | 🛠 Planned  |
-| HTML/Markdown summary report  | 🛠 Optional |
+```bash
+npm test
+```
 
 ---
 
-## 📂 Input Format
+## 📁 Project Structure
 
-* ✅ Chrome `.trace.json` (DevTools → Performance → Export)
-* ❌ `.har`, `.lighthouse.json` (not supported yet)
+```bash
+.
+├── analyzers/
+│   ├── extractSlowApis.ts
+│   ├── extractBlockingAssets.ts
+│   └── extractLongTasks.ts      # ✅ Newly added
+├── utils/
+│   └── loadTraceFile.ts         # ✅ Shared loader
+├── tests/
+│   ├── extractSlowApis.test.ts
+│   ├── extractBlockingAssets.test.ts
+│   └── extractLongTasks.test.ts # ✅ New test
+├── sample.trace.json            # Sample trace data
+└── index.ts                     # CLI entry
+```
 
 ---
 
-## 🤝 Contributing
+## 🛠 Future Work
 
-Pull requests are welcome!
-Use [issues](https://github.com/yeinn/trace-analyzer/issues) for bugs and suggestions.
+* 📄 Generate Markdown performance reports
+* 🧪 Extend CLI options (e.g., `--filter`, `--json`, `--out`)
+* 🤖 Add optional AI-based summary reports
+* 🕸 Web UI integration (planned)
 
 ---
+
+## 👩‍💻 Author
+
+[yeinn](https://github.com/yeinn)
+PRs and contributions welcome!
 
 ## 📜 License
 
