@@ -30,10 +30,9 @@ export function extractBlockingAssets(events: TraceEvent[]): BlockingAsset[] {
 
   // 요청/응답/완료 분리
   for (const e of events) {
-    const { name, args, ts } = e
-    const data = args?.data ?? {}
-
-    if (!data.requestId) continue
+    const { name, args } = e
+    const data = args?.data
+    if (!data?.requestId) continue
 
     switch (name) {
       case 'ResourceSendRequest':

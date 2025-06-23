@@ -67,6 +67,6 @@ export async function runAnalysis(flags: ReturnType<typeof import('../utils/pars
       fileName: filePath,
       topN: top
     })
-    console.log(`📝 Markdown 리포트가 report.md로 셍성되었습니다.`)
+    console.log(`📝 Markdown 리포트가 report.md로 생성되었습니다.`)
   }
 }

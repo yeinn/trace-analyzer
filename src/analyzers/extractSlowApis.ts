@@ -1,4 +1,4 @@
-type TraceEventTypes = {
+type TraceEvent = {
     name: string
     ts: number // timestamp
     args: {
@@ -17,17 +17,17 @@ export type ApliLatency = {
 /**
  * 느린 API 요청 추출
  * 
- * @param events traceEvents[]
+ * @param events TraceEvent[]
  * @returns { requestId, url }[]
  */
-export function extractSlowApiRequests(events: TraceEvent[]): ApiLatency[] {
+export function extractSlowApiRequests(events: TraceEvent[]): ApliLatency[] {
     const sendMap = new Map<string, TraceEvent>()
     const responseMap = new Map<string, TraceEvent>()
 
     // 요청/응답 분리
     for (const event of events) {
-        const { name, args, ts } = event
-        const { requestId, url } = args?.data ?? {}
+        const { name, args } = event
+        const { requestId } = args?.data ?? {}
 
         if (!requestId) continue
 
@@ -38,7 +38,7 @@ export function extractSlowApiRequests(events: TraceEvent[]): ApiLatency[] {
         }
     }
 
-    const results: ApiLatency[] = []
+    const results: ApliLatency[] = []
 
     // 요청-응답 시간 계산
     for (const [requestId, sendEvent] of sendMap.entries()) {

@@ -23,6 +23,10 @@ export async function generateMarkdownReport(
   lines.push(`- **Top N 결과:** ${topN}\n`)
   lines.push(`---\n`)
 
+  if(result.slowApis?.length < 1 || result.blockingAssets?.length < 1 || result.longTasks?.length < 1) {
+    lines.push(`분석 결과 성능 이슈 항목이 없습니다.`)
+  }
+
   if (result.slowApis?.length) {
     lines.push(`## 🐢 느린 API 요청 Top ${topN}\n`)
     lines.push(`| URL | Duration (ms) |`)
