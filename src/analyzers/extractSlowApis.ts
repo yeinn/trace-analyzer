@@ -37,7 +37,6 @@ export function extractSlowApiRequests(events: TraceEvent[]): ApliLatency[] {
             responseMap.set(requestId, event)
         }
     }
-
     const results: ApliLatency[] = []
 
     // 요청-응답 시간 계산
@@ -45,7 +44,7 @@ export function extractSlowApiRequests(events: TraceEvent[]): ApliLatency[] {
         const responseEvent = responseMap.get(requestId)
         if (!responseEvent) continue
 
-        const duration = (responseEvent.ts - sendEvent.ts) / 1000 // 마이크로초 → 밀리초
+        const duration = (responseEvent.ts - sendEvent.ts) / 1000
         const url = sendEvent.args.data.url || '(unknown)'
 
         results.push({ url, duration })

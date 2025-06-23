@@ -1,10 +1,10 @@
 import fs from 'fs/promises'
-import { extractSlowApiRequests } from '../analyzers/extractSlowApis.js'
-import { extractBlockingAssets } from '../analyzers/extractBlockingAssets.js'
-import { extractLongTasks } from '../analyzers/extractLongTasks.js'
-import { loadTraceEvents } from '../utils/loadTraceFile.js'
+import { extractSlowApiRequests } from '../analyzers/extractSlowApis'
+import { extractBlockingAssets } from '../analyzers/extractBlockingAssets'
+import { extractLongTasks } from '../analyzers/extractLongTasks'
+import { loadTraceEvents } from '../utils/loadTraceFile'
 import { Command } from 'commander'
-import { generateMarkdownReport } from '../utils/generateMarkdownReport.js'
+import { generateMarkdownReport } from '../utils/generateMarkdownReport'
 import dayjs from 'dayjs'
 
 const program = new Command()
@@ -53,8 +53,9 @@ export async function runAnalysis(flags: ReturnType<typeof import('../utils/pars
   if (isJsonOutput) {
     const json = JSON.stringify(jsonResult, null, 2)
     if (jsonOutputPath?.endsWith('.json')) {
+      const [fileName, extension] = jsonOutputPath.split('.')
       const timestamp = dayjs().format('YYYYMMDD_HHmmss')
-      const outputFileName = `${jsonOutputPath}_${timestamp}`
+      const outputFileName = `${fileName}_${timestamp}.${extension}`
       await fs.writeFile(outputFileName, json, 'utf-8')
       console.log(`✅ JSON 결과가 ${outputFileName}로 생성되었습니다.`)
     } else {

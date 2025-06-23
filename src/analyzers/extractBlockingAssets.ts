@@ -52,15 +52,17 @@ export function extractBlockingAssets(events: TraceEvent[]): BlockingAsset[] {
   for (const [id, send] of sendMap.entries()) {
     const response = responseMap.get(id)
     const finish = finishMap.get(id)
-    if (!response || !finish) continue
+    
+    if (!finish) continue
+
+    const url = send.args.data.url || '(unknown)'
 
     // js/css인 리소스 필터링
-    const mime = response.args.data.mimeType || ''
+    const mime = response?.args?.data?.mimeType || 'unknown'
     const isBlocker = mime.includes('javascript') || mime.includes('css')
     if (!isBlocker) continue
 
-    const url = send.args.data.url || '(unknown)'
-    const duration = (finish.ts - send.ts) / 1000 // μs → ms
+    const duration = (finish.ts - send.ts) / 1000
 
     result.push({ url, duration, mimeType: mime })
   }

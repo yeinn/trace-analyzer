@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { parseCliArgs } from './utils/parseCliArgs.js'
-import { runAnalysis } from './cli/main.js'
+import { parseCliArgs } from './utils/parseCliArgs'
+import { runAnalysis } from './cli/main'
 
 async function main() {
   const args = process.argv.slice(2)
