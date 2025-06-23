@@ -100,4 +100,5 @@ PRs and contributions welcome!
 
 ## 📜 License
 
-MIT
+[yeinn](https://github.com/yeinn)
+PRs and contributions welcome!
