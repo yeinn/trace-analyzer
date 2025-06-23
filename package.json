@@ -24,6 +24,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "commander": "^14.0.0"
+    "commander": "^14.0.0",
+    "dayjs": "^1.11.13"
   }
 }
