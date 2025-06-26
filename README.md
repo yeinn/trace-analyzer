@@ -21,9 +21,10 @@ Chrome의 Performance Trace 파일(`.trace.json` )을 분석하여 웹 페이지
 
 ```bash
 npm install -g trace-analyzer
-# 또는
-npx trace-analyzer <trace.json>
+# 또는 (pnpm 사용 시)
+pnpm add -g trace-analyzer
 ```
+📦 이 도구는 npm에서 배포 중이며, Node.js 기반 환경에서 동작합니다.
 
 ---
 
@@ -33,6 +34,8 @@ npx trace-analyzer <trace.json>
 
 ```bash
 npx trace-analyzer <trace.json> [옵션]
+# 또는 (pnpm 사용 시)
+pnpm dlx trace-analyzer <trace.json> [옵션]
 ```
 
 ### 옵션 목록
@@ -132,6 +135,6 @@ npm test
 
 ## 👩‍💻 작성자
 
-[yeinn](https://github.com/yeinn)
+[gomguma](https://github.com/yeinn)
 
 PR 및 기여 환영합니다!

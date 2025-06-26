@@ -18,10 +18,11 @@ A lightweight CLI tool that analyzes Chrome Performance Trace (`.trace.json`) fi
 ## 🔧 Installation
 
 ```bash
-npm install -g trace-analyzer
-# or
-npx trace-analyzer <trace.json>
+npm install trace-analyzer
+# or (if using pnpm)
+pnpm add -g trace-analyzer
 ```
+📦 This tool is distributed by npm and runs on Node.js-based environments.
 
 ---
 
@@ -31,6 +32,9 @@ npx trace-analyzer <trace.json>
 
 ```bash
 npx trace-analyzer <trace.json> [options]
+
+# or (if using pnpm)
+pnpm dlx trace-analyzer <trace.json> [options]
 ```
 
 ### Options
@@ -134,6 +138,6 @@ npm test
 
 ## 👩‍💼 Author
 
-[yeinn](https://github.com/yeinn)
+[gomguma](https://github.com/yeinn)
 
 Contributions and PRs are welcome!

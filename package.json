@@ -1,21 +1,45 @@
 {
+
+  "name": "trace-analyzer",
+  "version": "1.0.1",
+  "description": "A CLI tool that analyzes Chrome .trace.json files for performance bottlenecks.",
   "type": "module",
+  "main": "index.js",
   "bin": {
     "trace-analyzer": "dist/index.js"
   },
-  "name": "trace-analyzer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+    "files": [
+    "dist",
+    "sample.trace.json",
+    "README.md",
+    "README.ko.md",
+    "docs"
+  ],
+  
   "scripts": {
     "dev": "tsup src/index.ts --watch",
     "build": "tsup src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "chrome",
+    "trace",
+    "performance",
+    "cli",
+    "webperf",
+    "lighthouse"
+  ],
+  "author": "gomguma",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeinn/trace-analyzer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yeinn/trace-analyzer/issues"
+  },
+  "homepage": "https://github.com/yeinn/trace-analyzer#readme",
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
     "@types/node": "^24.0.3",
